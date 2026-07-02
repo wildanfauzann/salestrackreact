@@ -8,37 +8,22 @@ export interface StorageProvider {
 }
 
 export class LocalStorageProvider implements StorageProvider {
-  private uploadDir: string;
-
-  constructor(uploadDir: string = path.join(process.cwd(), 'uploads')) {
-    this.uploadDir = uploadDir;
-  }
-
-  async init() {
-    await fs.mkdir(this.uploadDir, { recursive: true });
-  }
-
   async save(file: Buffer, filename: string, mimetype: string): Promise<string> {
-    await this.init();
-    const filePath = path.join(this.uploadDir, filename);
-    await fs.writeFile(filePath, file);
-    return this.getUrl(filename);
+    // Di Vercel, kita tidak bisa menyimpan file ke disk (/var/task/uploads)
+    // Solusi tercepat tanpa setup AWS S3 / Supabase Storage adalah
+    // mengkonversi file langsung menjadi Base64 Data URI string.
+    const base64 = file.toString('base64');
+    return `data:${mimetype};base64,${base64}`;
   }
 
   async delete(url: string): Promise<void> {
-    const filename = path.basename(url);
-    const filePath = path.join(this.uploadDir, filename);
-    try {
-      await fs.unlink(filePath);
-    } catch (error) {
-      console.error(`Failed to delete file ${filePath}:`, error);
-    }
+    // Tidak ada yang perlu dihapus dari disk karena base64 disimpan di database
   }
 
   getUrl(filename: string): string {
-    return `/uploads/${filename}`;
+    return filename; // Tidak digunakan dalam base64 provider
   }
 }
 
-// Export a singleton instance for local dev
+// Export a singleton instance
 export const storage = new LocalStorageProvider();
