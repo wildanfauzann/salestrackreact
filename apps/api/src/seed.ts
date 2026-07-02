@@ -1,6 +1,6 @@
 import 'dotenv/config';
-import { db } from './db';
-import { auth } from './auth';
+import { db } from './db/index.js';
+import { auth } from './auth/index.js';
 
 async function seed() {
   console.log('Seeding initial users...');

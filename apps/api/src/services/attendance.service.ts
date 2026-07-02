@@ -1,7 +1,7 @@
-import { db } from '../db';
-import { attendance, officeSettings, user, leaveRequest } from '../db/schema';
+import { db } from '../db/index.js';
+import { attendance, officeSettings, user, leaveRequest } from '../db/schema.js';
 import { eq, and, desc, sql, lte, gte } from 'drizzle-orm';
-import { checkGeofence } from '../lib/geofence';
+import { checkGeofence } from '../lib/geofence.js';
 
 export class AttendanceService {
   static async checkIn(

@@ -1,5 +1,5 @@
-import { db } from '../db';
-import { leaveRequest } from '../db/schema';
+import { db } from '../db/index.js';
+import { leaveRequest } from '../db/schema.js';
 import { eq, desc } from 'drizzle-orm';
 
 export class LeaveService {

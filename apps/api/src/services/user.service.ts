@@ -1,7 +1,7 @@
-import { db } from '../db';
-import { user, session, account, attendance, leaveRequest, activity, deal, customer } from '../db/schema';
+import { db } from '../db/index.js';
+import { user, session, account, attendance, leaveRequest, activity, deal, customer } from '../db/schema.js';
 import { eq } from 'drizzle-orm';
-import { auth } from '../auth';
+import { auth } from '../auth/index.js';
 import bcrypt from 'bcryptjs';
 
 export class UserService {

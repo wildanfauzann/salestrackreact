@@ -1,14 +1,14 @@
-import userRoutes from './routes/user.routes';
-import attendanceRoutes from './routes/attendance.routes';
-import leaveRoutes from './routes/leave.routes';
-import activityRoutes from './routes/activity.routes';
-import dealRoutes from './routes/deal.routes';
-import customerRoutes from './routes/customer.routes';
-import dashboardRoutes from './routes/dashboard.routes';
-import targetRoutes from './routes/target.routes';
+import userRoutes from './routes/user.routes.js';
+import attendanceRoutes from './routes/attendance.routes.js';
+import leaveRoutes from './routes/leave.routes.js';
+import activityRoutes from './routes/activity.routes.js';
+import dealRoutes from './routes/deal.routes.js';
+import customerRoutes from './routes/customer.routes.js';
+import dashboardRoutes from './routes/dashboard.routes.js';
+import targetRoutes from './routes/target.routes.js';
 import express from 'express';
 import cors from 'cors';
-import { auth } from './auth';
+import { auth } from './auth/index.js';
 
 const app = express();
 

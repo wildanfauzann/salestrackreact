@@ -1,5 +1,5 @@
-import { db } from '../db';
-import { customer } from '../db/schema';
+import { db } from '../db/index.js';
+import { customer } from '../db/schema.js';
 import { eq, desc } from 'drizzle-orm';
 
 export class CustomerService {

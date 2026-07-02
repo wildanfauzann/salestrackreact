@@ -1,5 +1,5 @@
-import { db } from '../db';
-import { user, attendance, deal, globalTarget, activity } from '../db/schema';
+import { db } from '../db/index.js';
+import { user, attendance, deal, globalTarget, activity } from '../db/schema.js';
 import { eq, and, desc, sql, gte, lte, inArray } from 'drizzle-orm';
 
 export class DashboardService {

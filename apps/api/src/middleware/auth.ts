@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
-import { auth } from '../auth';
-import { db } from '../db';
-import { user } from '../db/schema';
+import { auth } from '../auth/index.js';
+import { db } from '../db/index.js';
+import { user } from '../db/schema.js';
 import { eq } from 'drizzle-orm';
 
 // Extend Express Request type

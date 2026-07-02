@@ -1,5 +1,5 @@
-import { db } from '../db';
-import { deal, user, customer } from '../db/schema';
+import { db } from '../db/index.js';
+import { deal, user, customer } from '../db/schema.js';
 import { eq, desc, sum, sql, inArray } from 'drizzle-orm';
 
 export class DealService {

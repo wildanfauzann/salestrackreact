@@ -1,7 +1,7 @@
-import { db } from '../db';
-import { activity, customer, deal } from '../db/schema';
+import { db } from '../db/index.js';
+import { activity, customer, deal } from '../db/schema.js';
 import { eq, desc, and, ne } from 'drizzle-orm';
-import { user } from '../db/schema';
+import { user } from '../db/schema.js';
 
 export class ActivityService {
   static async create(

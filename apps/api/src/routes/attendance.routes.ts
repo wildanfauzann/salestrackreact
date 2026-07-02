@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { requireAuth, requireRole } from '../middleware/auth';
-import { AttendanceService } from '../services/attendance.service';
-import { upload, generateFilename } from '../middleware/upload';
-import { storage } from '../lib/storage';
+import { requireAuth, requireRole } from '../middleware/auth.js';
+import { AttendanceService } from '../services/attendance.service.js';
+import { upload, generateFilename } from '../middleware/upload.js';
+import { storage } from '../lib/storage.js';
 
 const router = Router();
 
