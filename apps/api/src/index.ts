@@ -39,7 +39,7 @@ app.use('/api/targets', targetRoutes);
 import { toNodeHandler } from 'better-auth/node';
 
 // Better Auth route
-app.all("/api/auth/*", toNodeHandler(auth.handler));
+app.all(/^\/api\/auth/, toNodeHandler(auth.handler));
 
 if (process.env.NODE_ENV !== 'production') {
   const PORT = process.env.PORT || 3000;
