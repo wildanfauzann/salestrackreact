@@ -22,7 +22,6 @@ export class DealService {
     if (data.customerName && !finalCustomerId) {
       const newCustomer = await db.insert(customer).values({
         name: data.customerName,
-        company: '-', // Default placeholder since company is required in schema
         createdBy: userId
       }).returning();
       finalCustomerId = newCustomer[0].id;
