@@ -4,8 +4,12 @@ import { db } from '../db/index.js';
 import * as schema from '../db/schema.js';
 
 export const auth = betterAuth({
-  baseURL: process.env.BETTER_AUTH_URL,
-  trustedOrigins: process.env.FRONTEND_URL ? ['http://localhost:5173', process.env.FRONTEND_URL, 'https://salestrackreact2.netlify.app'] : ['http://localhost:5173', 'https://salestrackreact2.netlify.app'],
+  baseURL: process.env.BETTER_AUTH_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}/api/auth` : undefined),
+  trustedOrigins: [
+    'http://localhost:5173', 
+    'https://salestrackreact2.netlify.app',
+    ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : [])
+  ],
   database: drizzleAdapter(db, {
     provider: 'pg',
     schema: {
